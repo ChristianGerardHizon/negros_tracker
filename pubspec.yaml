@@ -24,6 +24,23 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+  # https://pub.dev/packages/dio
+  dio: ^3.0.9
+
+  # https://pub.dev/packages/location
+  location: ^3.0.2
+
+  # https://pub.dev/packages/rx
+  rx: ^0.0.5
+
+  # https://pub.dev/packages/flutter_bloc
+  flutter_bloc: ^3.2.0
+
+  # https://pub.dev/packages/equatable
+  equatable: ^1.0.0
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
