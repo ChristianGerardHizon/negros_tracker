@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/20/20 4:11 PM
+ * Created by Christian Gerard E. Hizon on 4/21/20 10:14 AM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/20/20 2:20 PM
+ * Last modified 4/20/20 4:34 PM
  ******************************************************************************/
 
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:covidstats/app/blocs/theme/state.dart';
+import 'package:covidstats/app/models/models.dart';
 import 'package:covidstats/app/models/themes.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,7 @@ import 'events.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   @override
-  ThemeState get initialState => ThemeState(
-        theme: ThemeData.light(),
-        color: Colors.red,
-      );
+  ThemeState get initialState => _mapThemeChange(ThemeType.dark);
 
   @override
   Stream<ThemeState> mapEventToState(ThemeEvent event) async* {
@@ -42,7 +40,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       case ThemeType.dark:
         theme = ThemeState(
           theme: ThemeData(
-            primaryColor: Colors.indigoAccent,
+            primaryColor: Colors.black,
           ),
           color: Colors.indigo,
         );

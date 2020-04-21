@@ -1,10 +1,9 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/20/20 2:02 PM
+ * Created by Christian Gerard E. Hizon on 4/21/20 10:14 AM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/20/20 2:00 PM
+ * Last modified 4/21/20 10:14 AM
  ******************************************************************************/
 
-import 'package:covidstats/app/models/themes.dart';
 import 'package:covidstats/app/repositories/repositories.dart';
 import 'package:covidstats/app/router.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +27,6 @@ class _ApplicationState extends State<Application> {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, ThemeState themeState) {
-        BlocProvider.of<ThemeBloc>(context)
-            .add(ThemeChanged(themeType: ThemeType.light));
         return MaterialApp(
           title: 'CovidStats',
           theme: themeState.theme,
