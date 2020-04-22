@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/21/20 4:13 PM
+ * Created by Christian Gerard E. Hizon on 4/22/20 12:48 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/21/20 12:53 PM
+ * Last modified 4/21/20 10:41 PM
  ******************************************************************************/
 
 import 'dart:async';
@@ -42,6 +42,14 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           color: Colors.green,
           theme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: Color(0xff283343),
+            primaryColor: Color(0xff37BC9B),
+          ),
+        );
+        break;
+      case ThemeType.black:
+        theme = ThemeState(
+          color: Colors.green,
+          theme: ThemeData.dark().copyWith(
             primaryColor: Color(0xff37BC9B),
           ),
         );

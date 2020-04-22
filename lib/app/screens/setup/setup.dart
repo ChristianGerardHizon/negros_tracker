@@ -1,4 +1,11 @@
 /*******************************************************************************
+ * Created by Christian Gerard E. Hizon on 4/22/20 12:48 PM
+ * Copyright (c) 2020 . All rights reserved.
+ * Last modified 4/22/20 12:48 PM
+ ******************************************************************************/
+
+import 'package:covidstats/app/screens/tabs/tabs.dart';
+/*******************************************************************************
  * Created by Christian Gerard E. Hizon on 4/21/20 4:13 PM
  * Copyright (c) 2020 . All rights reserved.
  * Last modified 4/21/20 4:13 PM
@@ -6,7 +13,6 @@
 
 import 'package:covidstats/app/shared/negros_tracker.dart';
 import 'package:covidstats/app/utils/image_assets.dart';
-
 /*******************************************************************************
  * Created by Christian Gerard E. Hizon on 4/21/20 10:39 AM
  * Copyright (c) 2020 . All rights reserved.
@@ -52,12 +58,12 @@ class SetupPage extends StatelessWidget {
               Expanded(
                 flex: 7,
                 child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 50),
-                    child: Text(
-                      Strings.message,
-                      style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                    )),
+                  margin: EdgeInsets.symmetric(vertical: 50),
+                  child: Text(
+                    Strings.message,
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  ),
+                ),
               ),
 
               ///
@@ -70,9 +76,12 @@ class SetupPage extends StatelessWidget {
                     Container(
                       width: double.maxFinite,
                       child: FlatButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(context,
+                              TabsPage.route, (route) => false);
+                        },
                         shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(8.0),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         padding: EdgeInsets.all(18),
                         color: Theme.of(context).primaryColor,
@@ -87,17 +96,18 @@ class SetupPage extends StatelessWidget {
                     ),
                     SizedBox(height: 5),
                     Container(
-                        width: double.maxFinite,
-                        child: FlatButton(
-                          padding: EdgeInsets.all(18),
-                          onPressed: () {},
-                          child: Text(
-                            'Manually choose location',
-                            style: TextStyle(
-                              color: Colors.grey,
-                            ),
+                      width: double.maxFinite,
+                      child: FlatButton(
+                        padding: EdgeInsets.all(18),
+                        onPressed: () {},
+                        child: Text(
+                          'Manually choose location',
+                          style: TextStyle(
+                            color: Colors.grey,
                           ),
-                        )),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )

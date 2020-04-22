@@ -1,11 +1,12 @@
-// ignore: slash_for_doc_comments
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/20/20 2:13 PM
+ * Created by Christian Gerard E. Hizon on 4/22/20 12:48 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/20/20 2:13 PM
+ * Last modified 4/21/20 10:41 PM
  ******************************************************************************/
 
+// ignore: slash_for_doc_comments
 enum ThemeType {
   light,
   dark,
+  black,
 }

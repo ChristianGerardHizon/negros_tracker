@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/21/20 10:14 AM
+ * Created by Christian Gerard E. Hizon on 4/22/20 12:48 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/21/20 10:14 AM
+ * Last modified 4/21/20 4:15 PM
  ******************************************************************************/
 
 import 'package:covidstats/app/repositories/repositories.dart';
@@ -28,7 +28,7 @@ class _ApplicationState extends State<Application> {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, ThemeState themeState) {
         return MaterialApp(
-          title: 'CovidStats',
+          title: 'NegrosTracker',
           theme: themeState.theme,
           initialRoute: Router.initial,
           onGenerateRoute: Router.generateRoute,
