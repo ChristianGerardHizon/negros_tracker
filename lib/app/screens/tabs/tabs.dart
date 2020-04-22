@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 5:34 PM
+ * Created by Christian Gerard E. Hizon on 4/22/20 5:58 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 5:34 PM
+ * Last modified 4/22/20 5:57 PM
  ******************************************************************************/
 
 import 'package:covidstats/app/blocs/tabs/bloc.dart';
@@ -34,55 +34,58 @@ class TabsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final TabsBloc _tabBloc = BlocProvider.of<TabsBloc>(context);
 
-    return Scaffold(
-      body: BlocBuilder<TabsBloc, TabsState>(
-        builder: (BuildContext context, TabsState state) {
-          debugPrint(state.position.toString());
+    buildTab(int index) {
+      if (index == 0) {
+        return DashboardPage();
+      } else if (index == 1) {
+        return MapPage();
+      } else if (index == 2) {
+        return ProvincialPage();
+      } else {
+        return Container(child: Text('Not Found'));
+      }
+    }
 
-          if (state.position == 0) {
-            return DashboardPage();
-          } else if (state.position == 1) {
-            return MapPage();
-          } else if (state.position == 2) {
-            return ProvincialPage();
-          } else {
-            return Container(child: Text('Not Found'));
-          }
-        },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (i) => _tabBloc.add(TabChanged(position: i)),
-        backgroundColor: Theme
-            .of(context)
-            .scaffoldBackgroundColor,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.category,
-            ),
-            title: Text(
-              "Dashboard",
-            ),
+    return BlocBuilder<TabsBloc, TabsState>(
+      builder: (BuildContext context, TabsState state) {
+        return Scaffold(
+          body: buildTab(state.position),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: state.position,
+            onTap: (i) => _tabBloc.add(TabChanged(position: i)),
+            backgroundColor: Theme
+                .of(context)
+                .scaffoldBackgroundColor,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.category,
+                ),
+                title: Text(
+                  "Dashboard",
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.map,
+                ),
+                title: Text(
+                  "Map",
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.mapPin,
+                  size: 20,
+                ),
+                title: Text(
+                  "Provincial",
+                ),
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.map,
-            ),
-            title: Text(
-              "Map",
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.mapPin,
-              size: 20,
-            ),
-            title: Text(
-              "Provincial",
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

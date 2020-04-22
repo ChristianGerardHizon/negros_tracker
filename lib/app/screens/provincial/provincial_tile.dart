@@ -1,11 +1,10 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 5:06 PM
+ * Created by Christian Gerard E. Hizon on 4/22/20 5:58 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 5:06 PM
+ * Last modified 4/22/20 5:57 PM
  ******************************************************************************/
 
 import 'package:covidstats/app/shared/map_pills.dart';
-
 /*******************************************************************************
  * Created by Christian Gerard E. Hizon on 4/22/20 5:02 PM
  * Copyright (c) 2020 . All rights reserved.
@@ -25,6 +24,9 @@ class ProvincialTile extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
       child: Card(
+        color: Theme
+            .of(context)
+            .scaffoldBackgroundColor,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
           child: Column(

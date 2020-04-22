@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 5:06 PM
+ * Created by Christian Gerard E. Hizon on 4/22/20 5:58 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 5:06 PM
+ * Last modified 4/22/20 5:57 PM
  ******************************************************************************/
 
 import 'package:covidstats/app/screens/provincial/provincial_tile.dart';
@@ -25,7 +25,7 @@ class ProvincialContent extends StatelessWidget {
           title: 'Talisay City',
         ),
         ProvincialTile(
-          title: 'Silay City City',
+          title: 'Silay City',
         ),
         ProvincialTile(
           title: 'Cadiz City',
