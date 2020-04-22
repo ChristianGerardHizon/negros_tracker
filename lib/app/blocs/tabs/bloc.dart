@@ -1,12 +1,11 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 2:44 PM
+ * Created by Christian Gerard E. Hizon on 4/22/20 5:34 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 2:44 PM
+ * Last modified 4/22/20 5:34 PM
  ******************************************************************************/
 
 import 'package:covidstats/app/blocs/tabs/events.dart';
 import 'package:covidstats/app/blocs/tabs/state.dart';
-
 /*******************************************************************************
  * Created by Christian Gerard E. Hizon on 4/22/20 2:02 PM
  * Copyright (c) 2020 . All rights reserved.
@@ -14,14 +13,14 @@ import 'package:covidstats/app/blocs/tabs/state.dart';
  ******************************************************************************/
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TabBloc extends Bloc<TabsEvent, TabState> {
+class TabsBloc extends Bloc<TabsEvent, TabsState> {
   @override
-  TabState get initialState => TabState(position: 0);
+  TabsState get initialState => TabsState(position: 0);
 
   @override
-  Stream<TabState> mapEventToState(TabsEvent event) async* {
+  Stream<TabsState> mapEventToState(TabsEvent event) async* {
     if (event is TabChanged) {
-      yield TabState(position: event.position);
+      yield TabsState(position: event.position);
     }
   }
 }

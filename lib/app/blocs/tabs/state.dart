@@ -1,16 +1,16 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 2:44 PM
+ * Created by Christian Gerard E. Hizon on 4/22/20 5:34 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 2:21 PM
+ * Last modified 4/22/20 5:31 PM
  ******************************************************************************/
 
 import 'package:equatable/equatable.dart';
 
-class TabState extends Equatable {
+class TabsState extends Equatable {
   final int position;
 
-  TabState({this.position}) : assert(position != null);
+  TabsState({this.position}) : assert(position != null);
 
   @override
-  List<Object> get props => null;
+  List<Object> get props => [position];
 }
