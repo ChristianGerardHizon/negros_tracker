@@ -1,7 +1,7 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ~ Created by Christian Gerard E. Hizon on 4/22/20 1:59 PM
+  ~ Created by Christian Gerard E. Hizon on 4/22/20 5:39 PM
   ~ Copyright (c) 2020 . All rights reserved.
-  ~ Last modified 4/22/20 1:59 PM
+  ~ Last modified 4/22/20 5:35 PM
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,6 +15,11 @@
         android:name="io.flutter.app.FlutterApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="NegrosTracker">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAuXYroc7_7iMmnAJZgq0nUBr9dQcWwlUs" />
+
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
