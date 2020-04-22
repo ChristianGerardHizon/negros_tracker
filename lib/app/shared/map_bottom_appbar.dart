@@ -1,17 +1,12 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 4:25 PM
+ * Created by Christian Gerard E. Hizon on 4/22/20 5:06 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 4:25 PM
- ******************************************************************************/
-
-import 'package:covidstats/app/screens/map/map_pills.dart';
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 3:34 PM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 3:34 PM
+ * Last modified 4/22/20 4:31 PM
  ******************************************************************************/
 
 import 'package:flutter/material.dart';
+
+import 'map_pills.dart';
 
 class MapBottomAppBar extends StatelessWidget {
   @override
@@ -42,7 +37,7 @@ class MapBottomAppBar extends StatelessWidget {
                 child: MapPills(
                   color: Color(0xff37BC9B),
                   count: '143',
-                  title: 'Positive',
+                  title: 'Recoveries',
                 ),
               ),
             ],

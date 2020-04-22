@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 4:25 PM
+ * Created by Christian Gerard E. Hizon on 4/22/20 5:06 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 4:25 PM
+ * Last modified 4/22/20 4:31 PM
  ******************************************************************************/
 
-import 'package:covidstats/app/screens/map/map_bottom_appbar.dart';
+import 'package:covidstats/app/shared/map_bottom_appbar.dart';
 /*******************************************************************************
  * Created by Christian Gerard E. Hizon on 4/21/20 4:13 PM
  * Copyright (c) 2020 . All rights reserved.
