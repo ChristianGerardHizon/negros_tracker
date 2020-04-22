@@ -1,3 +1,9 @@
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Created by Christian Gerard E. Hizon on 4/22/20 1:59 PM
+  ~ Copyright (c) 2020 . All rights reserved.
+  ~ Last modified 4/22/20 1:59 PM
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stratiumsoftware.covidstats">
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
@@ -8,7 +14,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:icon="@mipmap/ic_launcher"
-        android:label="covidstats">
+        android:label="NegrosTracker">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
