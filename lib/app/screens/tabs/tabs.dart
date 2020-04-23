@@ -1,21 +1,12 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 5:58 PM
+ * Created by Christian Gerard E. Hizon on 4/23/20 11:45 AM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 5:57 PM
+ * Last modified 4/23/20 11:45 AM
  ******************************************************************************/
 
 import 'package:covidstats/app/blocs/tabs/bloc.dart';
-import 'package:covidstats/app/blocs/tabs/events.dart';
 import 'package:covidstats/app/blocs/tabs/state.dart';
-import 'package:covidstats/app/screens/dashboard/dashboard.dart';
-import 'package:covidstats/app/screens/map/map.dart';
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 5:06 PM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 5:06 PM
- ******************************************************************************/
-
-import 'package:covidstats/app/screens/provincial/provincial.dart';
+import 'package:covidstats/app/screens/tabs/tabs_bottom_nav.dart';
 import 'package:flutter/cupertino.dart';
 /*******************************************************************************
  * Created by Christian Gerard E. Hizon on 4/21/20 4:13 PM
@@ -25,65 +16,17 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TabsPage extends StatelessWidget {
   static const String route = 'tabs';
 
   @override
   Widget build(BuildContext context) {
-    final TabsBloc _tabBloc = BlocProvider.of<TabsBloc>(context);
-
-    buildTab(int index) {
-      if (index == 0) {
-        return DashboardPage();
-      } else if (index == 1) {
-        return MapPage();
-      } else if (index == 2) {
-        return ProvincialPage();
-      } else {
-        return Container(child: Text('Not Found'));
-      }
-    }
-
     return BlocBuilder<TabsBloc, TabsState>(
       builder: (BuildContext context, TabsState state) {
         return Scaffold(
-          body: buildTab(state.position),
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: state.position,
-            onTap: (i) => _tabBloc.add(TabChanged(position: i)),
-            backgroundColor: Theme
-                .of(context)
-                .scaffoldBackgroundColor,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.category,
-                ),
-                title: Text(
-                  "Dashboard",
-                ),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.map,
-                ),
-                title: Text(
-                  "Map",
-                ),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  FontAwesomeIcons.mapPin,
-                  size: 20,
-                ),
-                title: Text(
-                  "Provincial",
-                ),
-              ),
-            ],
-          ),
+          body: state.currentTab,
+          bottomNavigationBar: TabsBottomNavigation(),
         );
       },
     );
