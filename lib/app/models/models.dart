@@ -1,3 +1,8 @@
+// Created by Christian Gerard E. Hizon on 4/24/20 9:08 AM
+// Copyright (c) 2020 . All rights reserved.
+// Last modified 4/24/20 9:08 AM
+
+export './location.dart';
 /*******************************************************************************
  * Created by Christian Gerard E. Hizon on 4/21/20 10:14 AM
  * Copyright (c) 2020 . All rights reserved.

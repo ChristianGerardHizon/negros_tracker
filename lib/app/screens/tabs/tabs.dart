@@ -1,8 +1,6 @@
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/23/20 11:45 AM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/23/20 11:45 AM
- ******************************************************************************/
+// Created by Christian Gerard E. Hizon on 4/24/20 9:08 AM
+// Copyright (c) 2020 . All rights reserved.
+// Last modified 4/23/20 1:34 PM
 
 import 'package:covidstats/app/blocs/tabs/bloc.dart';
 import 'package:covidstats/app/blocs/tabs/state.dart';
@@ -22,13 +20,16 @@ class TabsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TabsBloc, TabsState>(
-      builder: (BuildContext context, TabsState state) {
-        return Scaffold(
-          body: state.currentTab,
-          bottomNavigationBar: TabsBottomNavigation(),
-        );
-      },
+    return BlocProvider<TabsBloc>(
+      create: (context) => TabsBloc(),
+      child: BlocBuilder<TabsBloc, TabsState>(
+        builder: (BuildContext context, TabsState state) {
+          return Scaffold(
+            body: state.currentTab,
+            bottomNavigationBar: TabsBottomNavigation(),
+          );
+        },
+      ),
     );
   }
 }

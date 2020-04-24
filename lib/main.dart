@@ -1,11 +1,9 @@
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 5:34 PM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 5:10 PM
- ******************************************************************************/
+// Created by Christian Gerard E. Hizon on 4/24/20 9:08 AM
+// Copyright (c) 2020 . All rights reserved.
+// Last modified 4/24/20 9:08 AM
 
 import 'package:covidstats/app/app.dart';
-import 'package:covidstats/app/blocs/tabs/bloc.dart';
+import 'package:covidstats/app/blocs/setup/bloc.dart';
 import 'package:covidstats/app/repositories/repositories.dart';
 import 'package:covidstats/app/repositories/tracker_repository.dart';
 import 'package:covidstats/app_bloc_delegate.dart';
@@ -29,8 +27,8 @@ void main() {
       BlocProvider<ThemeBloc>(
         create: (context) => ThemeBloc(),
       ),
-      BlocProvider<TabsBloc>(
-        create: (context) => TabsBloc(),
+      BlocProvider<SetupBloc>(
+        create: (context) => SetupBloc(),
       ),
     ],
     child: Application(
