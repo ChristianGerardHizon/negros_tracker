@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 9:08 AM
+// Created by Christian Gerard E. Hizon on 4/24/20 9:24 AM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 7:50 AM
+// Last modified 4/24/20 9:15 AM
 
 import 'package:covidstats/app/blocs/setup/events.dart';
 import 'package:covidstats/app/blocs/setup/state.dart';
@@ -24,7 +24,7 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     }
 
     if (event is SetAutomaticLocation) {
-      yield SetupLocationInitialized(
+      yield SetupAutomaticLocationInitialized(
         address: event.address,
         location: event.location,
       );

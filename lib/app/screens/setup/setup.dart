@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 9:08 AM
+// Created by Christian Gerard E. Hizon on 4/24/20 9:24 AM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 9:08 AM
+// Last modified 4/24/20 9:24 AM
 
 import 'package:covidstats/app/blocs/blocs.dart';
 import 'package:covidstats/app/models/location.dart';
@@ -41,6 +41,7 @@ class SetupPage extends StatelessWidget {
         builder: (BuildContext context) {
           return SetupSuccessDialog(
             city: city,
+            event: event,
             onConfirm: (event) {
               _setupBloc.add(event);
               Navigator.pushNamedAndRemoveUntil(

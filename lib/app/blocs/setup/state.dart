@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 9:08 AM
+// Created by Christian Gerard E. Hizon on 4/24/20 9:24 AM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 7:50 AM
+// Last modified 4/24/20 9:15 AM
 
 import 'package:covidstats/app/models/location.dart';
 import 'package:equatable/equatable.dart';
@@ -36,11 +36,11 @@ class SetupManualLocationInitialized extends SetupState {
   List<Object> get props => [address];
 }
 
-class SetupLocationInitialized extends SetupState {
+class SetupAutomaticLocationInitialized extends SetupState {
   final Address address;
   final LocationData location;
 
-  SetupLocationInitialized({this.location, this.address})
+  SetupAutomaticLocationInitialized({this.location, this.address})
       : assert(address != null);
 
   @override
