@@ -1,14 +1,12 @@
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 5:06 PM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 4:31 PM
- ******************************************************************************/
+// Created by Christian Gerard E. Hizon on 4/24/20 2:22 PM
+// Copyright (c) 2020 . All rights reserved.
+// Last modified 4/24/20 12:24 PM
 
 import 'package:flutter/material.dart';
 
 import 'map_pills.dart';
 
-class MapBottomAppBar extends StatelessWidget {
+class SharedBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

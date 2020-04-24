@@ -1,24 +1,10 @@
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 5:39 PM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 5:38 PM
- ******************************************************************************/
+// Created by Christian Gerard E. Hizon on 4/24/20 2:22 PM
+// Copyright (c) 2020 . All rights reserved.
+// Last modified 4/24/20 2:22 PM
 
 import 'dart:async';
 
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 5:06 PM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 4:31 PM
- ******************************************************************************/
-
-import 'package:covidstats/app/shared/map_bottom_appbar.dart';
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/21/20 4:13 PM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/21/20 4:13 PM
- ******************************************************************************/
-
+import 'package:covidstats/app/shared/shared_bottom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -28,8 +14,6 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-
-
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
@@ -43,17 +27,18 @@ class _MapPageState extends State<MapPage> {
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(80.0), // here the desired height
-          child: MapBottomAppBar(),
+          child: SharedBottomAppBar(),
         ),
         title: Text(
-          'Negros Occidental', style: TextStyle(fontWeight: FontWeight.w700),),
+          'Negros Occidental',
+          style: TextStyle(fontWeight: FontWeight.w700),
+        ),
         elevation: 0,
         backgroundColor: Theme
             .of(context)
@@ -61,7 +46,7 @@ class _MapPageState extends State<MapPage> {
       ),
       backgroundColor: Colors.white12,
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        mapType: MapType.normal,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
