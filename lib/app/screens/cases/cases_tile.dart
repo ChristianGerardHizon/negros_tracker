@@ -1,7 +1,8 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 2:22 PM
+// Created by Christian Gerard E. Hizon on 4/24/20 4:51 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 2:22 PM
+// Last modified 4/24/20 4:51 PM
 
+import 'package:covidstats/app/screens/case/case.dart';
 import 'package:covidstats/app/screens/cases/case_pills.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class CasesTile extends StatelessWidget {
       child: Card(
         color: Theme.of(context).scaffoldBackgroundColor,
         child: FlatButton(
-          onPressed: () {},
+          onPressed: () => Navigator.pushNamed(context, CasePage.route),
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 25, horizontal: 0),
             child: Row(

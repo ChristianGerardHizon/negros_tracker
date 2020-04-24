@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 2:22 PM
+// Created by Christian Gerard E. Hizon on 4/24/20 4:51 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 2:16 PM
+// Last modified 4/24/20 3:33 PM
 
 import 'package:flutter/material.dart';
 
@@ -39,7 +39,7 @@ class CasePills extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: new BoxDecoration(
               color: color,
               border: Border.all(color: color),
