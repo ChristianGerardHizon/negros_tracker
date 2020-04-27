@@ -1,8 +1,6 @@
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 5:58 PM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 5:57 PM
- ******************************************************************************/
+// Created by Christian Gerard E. Hizon on 4/27/20 3:13 PM
+// Copyright (c) 2020 . All rights reserved.
+// Last modified 4/27/20 3:13 PM
 
 import 'package:covidstats/app/shared/map_pills.dart';
 /*******************************************************************************
@@ -16,8 +14,22 @@ import 'provincial_stat.dart';
 
 class ProvincialTile extends StatelessWidget {
   final String title;
+  final String positive;
+  final String recoveries;
+  final String deaths;
+  final String puis;
+  final String pums;
+  final String subtitle;
 
-  const ProvincialTile({Key key, this.title}) : super(key: key);
+  const ProvincialTile({Key key,
+    this.title,
+    this.positive,
+    this.recoveries,
+    this.deaths,
+    this.puis,
+    this.pums,
+    this.subtitle})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +59,7 @@ class ProvincialTile extends StatelessWidget {
                           flex: 1,
                           child: MapPills(
                             title: 'Positive',
-                            count: '34',
+                            count: this.positive ?? '0',
                             color: Colors.white,
                           ),
                         ),
@@ -56,7 +68,7 @@ class ProvincialTile extends StatelessWidget {
                           flex: 1,
                           child: MapPills(
                             title: 'Recoveries',
-                            count: '45',
+                            count: this.recoveries ?? '0',
                             color: Colors.white,
                           ),
                         )
@@ -66,24 +78,25 @@ class ProvincialTile extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         ProvincialStats(
-                          count: '121',
+                          count: this.deaths ?? '0',
                           title: 'Deaths',
                         ),
                         ProvincialStats(
-                          count: '53',
+                          count: this.puis ?? '0',
                           title: 'PUIs',
                         ),
                         ProvincialStats(
-                          count: '23',
+                          count: this.pums ?? '0',
                           title: 'PUMs',
                         ),
                       ],
                     ),
                     SizedBox(height: 8),
-                    Container(
+                    this.subtitle != null
+                        ? Container(
                       width: double.maxFinite,
                       child: Text(
-                        '+3 positive this week',
+                        this.subtitle,
                         textAlign: TextAlign.end,
                         style: TextStyle(
                           letterSpacing: 1,
@@ -93,6 +106,7 @@ class ProvincialTile extends StatelessWidget {
                         ),
                       ),
                     )
+                        : Container(),
                   ],
                 ),
               )
