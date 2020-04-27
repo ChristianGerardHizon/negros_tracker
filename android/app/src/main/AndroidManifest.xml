@@ -1,7 +1,7 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ~ Created by Christian Gerard E. Hizon on 4/22/20 5:39 PM
+  ~ Created by Christian Gerard E. Hizon on 4/27/20 1:27 PM
   ~ Copyright (c) 2020 . All rights reserved.
-  ~ Last modified 4/22/20 5:35 PM
+  ~ Last modified 4/27/20 12:39 PM
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,6 +11,8 @@
          In most cases you can leave this as-is, but you if you want to provide
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:icon="@mipmap/ic_launcher"
