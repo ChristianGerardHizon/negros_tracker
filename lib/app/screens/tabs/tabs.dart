@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/27/20 12:26 PM
+// Created by Christian Gerard E. Hizon on 4/27/20 4:21 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/27/20 12:25 PM
+// Last modified 4/27/20 4:21 PM
 
 import 'package:covidstats/app/blocs/tabs/bloc.dart';
 import 'package:covidstats/app/blocs/tabs/state.dart';
@@ -23,7 +23,10 @@ class TabsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<TabsBloc>(
       create: (context) => TabsBloc(),
-      child: BlocBuilder<TabsBloc, TabsState>(
+      child: BlocConsumer<TabsBloc, TabsState>(
+        buildWhen: (previous, current) {
+          return previous.position != current.position;
+        },
         builder: (BuildContext context, TabsState state) {
           return Scaffold(
             appBar: PreferredSize(
@@ -48,7 +51,7 @@ class TabsPage extends StatelessWidget {
             body: state.currentTab,
             bottomNavigationBar: TabsBottomNavigation(),
           );
-        },
+        }, listener: (BuildContext context, TabsState state) {},
       ),
     );
   }

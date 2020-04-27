@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/27/20 4:15 PM
+// Created by Christian Gerard E. Hizon on 4/27/20 4:21 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/27/20 4:14 PM
+// Last modified 4/27/20 4:21 PM
 
 import 'dart:async';
 
@@ -78,7 +78,7 @@ class _MapPageState extends State<MapPage> {
                         circleId: CircleId(doc.documentID),
                         center: LatLng(latitude, longitude),
                         radius: radius,
-                        strokeWidth: 5,
+                        strokeWidth: 3,
                         fillColor: Colors.red.withOpacity(.4),
                         strokeColor: Colors.redAccent,
                         consumeTapEvents: true,
