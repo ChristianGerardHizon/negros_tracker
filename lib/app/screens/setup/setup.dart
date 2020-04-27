@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 9:24 AM
+// Created by Christian Gerard E. Hizon on 4/27/20 4:15 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 9:24 AM
+// Last modified 4/27/20 4:07 PM
 
 import 'package:covidstats/app/blocs/blocs.dart';
 import 'package:covidstats/app/models/location.dart';
@@ -168,7 +168,7 @@ class SetupPage extends StatelessWidget {
                               .primaryColor,
                           icon: Icon(FontAwesomeIcons.mapMarkerAlt),
                           label: Text(
-                            'Enable Location',
+                            'Use Location',
                             style: TextStyle(
                               fontSize: 18,
                             ),

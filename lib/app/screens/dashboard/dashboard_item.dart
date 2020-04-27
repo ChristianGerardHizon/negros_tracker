@@ -1,8 +1,6 @@
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 12:48 PM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 12:05 PM
- ******************************************************************************/
+// Created by Christian Gerard E. Hizon on 4/27/20 4:15 PM
+// Copyright (c) 2020 . All rights reserved.
+// Last modified 4/27/20 4:15 PM
 
 import 'package:flutter/material.dart';
 
@@ -18,6 +16,16 @@ class DashboardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _fontSizeCounter(String str) {
+      if (str.length <= 2) {
+        return 80;
+      } else if (str.length == 3) {
+        return 50;
+      } else {
+        return 20;
+      }
+    }
+
     return Expanded(
       flex: 1,
       child: Container(
@@ -57,9 +65,10 @@ class DashboardItem extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   this.count,
+                                  overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                     color: color,
-                                    fontSize: 80,
+                                    fontSize: _fontSizeCounter(this.count),
                                     fontWeight: FontWeight.bold,
                                   ),
                                 )
