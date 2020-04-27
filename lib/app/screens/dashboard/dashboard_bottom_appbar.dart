@@ -1,8 +1,9 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 9:24 AM
+// Created by Christian Gerard E. Hizon on 4/27/20 12:26 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 9:24 AM
+// Last modified 4/27/20 12:25 PM
 
 import 'package:covidstats/app/blocs/blocs.dart';
+import 'package:covidstats/app/screens/setup/setup.dart';
 /*******************************************************************************
  * Created by Christian Gerard E. Hizon on 4/22/20 12:48 PM
  * Copyright (c) 2020 . All rights reserved.
@@ -49,7 +50,9 @@ class DashboardBottomAppBar extends StatelessWidget {
               ),
               Container(
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, SetupPage.route, (route) => false),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
                       side: BorderSide(color: Colors.grey)),

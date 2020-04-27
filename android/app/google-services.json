@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "209282759854",
+    "firebase_url": "https://fir-covid-tracker.firebaseio.com",
+    "project_id": "fir-covid-tracker",
+    "storage_bucket": "fir-covid-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209282759854:android:593e8c1948202dc891013f",
+        "android_client_info": {
+          "package_name": "com.stratiumsoftware.negrostracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209282759854-4dvv64pnseue6an8r4q79ege98q6suj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWkGxy_B6N1b7mvlWmyQ3BjOua0TYJ-sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209282759854-4dvv64pnseue6an8r4q79ege98q6suj6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

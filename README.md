@@ -1,4 +1,4 @@
-# covidstats
+# NegrosTracker
 
 A new Flutter application.
 
