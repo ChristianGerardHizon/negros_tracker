@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/28/20 5:05 PM
+// Created by Christian Gerard E. Hizon on 4/28/20 5:42 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/28/20 5:04 PM
+// Last modified 4/28/20 5:26 PM
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covidstats/app/models/case.dart';
 import 'package:covidstats/app/utils/modifiers.dart';
@@ -85,6 +85,7 @@ class _CaseSideTimelineState extends State<CaseSideTimeline> {
 
 
                           return Container(
+                            margin: EdgeInsets.only(bottom: 10),
                             child: Text(
                               '${date.month}/${date.day} - ${Modifiers
                                   .capitalize(doc.data['location'] ?? '')}',
