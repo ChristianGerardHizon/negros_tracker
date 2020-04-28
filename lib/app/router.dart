@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 4:51 PM
+// Created by Christian Gerard E. Hizon on 4/28/20 5:05 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 2:35 PM
+// Last modified 4/28/20 4:24 PM
 
 import 'package:covidstats/app/screens/case/case.dart';
 /*******************************************************************************
@@ -34,8 +34,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => TabsPage());
 
       case CasePage.route:
-        return MaterialPageRoute(builder: (_) => CasePage());
-
+        return MaterialPageRoute(
+            builder: (_) => CasePage(args: settings.arguments));
 
       default:
         return MaterialPageRoute(builder: (_) => NotFoundPage());

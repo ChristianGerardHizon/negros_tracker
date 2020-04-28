@@ -1,12 +1,17 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 4:51 PM
+// Created by Christian Gerard E. Hizon on 4/28/20 5:05 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 4:50 PM
+// Last modified 4/28/20 4:33 PM
 
+import 'package:covidstats/app/models/case.dart';
 import 'package:covidstats/app/screens/case/case_side_profile.dart';
 import 'package:covidstats/app/screens/case/case_side_timeline.dart';
 import 'package:flutter/material.dart';
 
 class CaseInfo extends StatelessWidget {
+  final Patient patient;
+
+  const CaseInfo({Key key, this.patient}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,14 +21,18 @@ class CaseInfo extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              CaseSideTimeline(),
+              CaseSideTimeline(
+                patient: patient,
+              ),
               Container(
                   height: 300,
                   child: VerticalDivider(
                     indent: 20,
                     endIndent: 20,
                   )),
-              CaseSideProfile()
+              CaseSideProfile(
+                patient: patient,
+              )
             ],
           ),
           Text(

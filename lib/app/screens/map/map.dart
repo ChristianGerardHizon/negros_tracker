@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/27/20 4:21 PM
+// Created by Christian Gerard E. Hizon on 4/28/20 5:05 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/27/20 4:21 PM
+// Last modified 4/28/20 5:04 PM
 
 import 'dart:async';
 
@@ -64,14 +64,15 @@ class _MapPageState extends State<MapPage> {
               docs.forEach((doc) {
                 var data = doc.data;
 
-                var latitude = data['latitude'];
-                var longitude = data['longitude'];
+                double latitude = data['latitude'];
+                double longitude = data['longitude'];
+                int positiveCount = doc.data['total_positive'];
 
-                if (latitude != null && longitude != null) {
-                  double radius = (250 + (doc.data['total_positive'] ?? 0 * 10))
-                      .roundToDouble();
-
-                  debugPrint(radius.toString());
+                if (latitude != null &&
+                    longitude != null &&
+                    positiveCount >= 1) {
+                  double radius =
+                  (250 + (positiveCount ?? 0 * 10)).roundToDouble();
 
                   _circles.add(
                     Circle(

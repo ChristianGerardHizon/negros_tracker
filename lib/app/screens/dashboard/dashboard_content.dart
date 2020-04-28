@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/27/20 12:26 PM
+// Created by Christian Gerard E. Hizon on 4/28/20 5:05 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/27/20 12:25 PM
+// Last modified 4/28/20 5:04 PM
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covidstats/app/blocs/blocs.dart';
@@ -58,7 +58,8 @@ class _DashboardContentState extends State<DashboardContent> {
                     String overallPositive = '0';
                     String overallRecoveries = '0';
 
-                    if (snapshot.hasData && snapshot.data != null &&
+                    if (snapshot.hasData &&
+                        snapshot.data != null &&
                         snapshot.data.exists) {
                       DocumentSnapshot snap = snapshot.data;
                       overallDeaths = snap.data['total_deaths'].toString();
@@ -74,9 +75,8 @@ class _DashboardContentState extends State<DashboardContent> {
                     int month = date.month;
                     int year = date.year;
 
-                    String dateString = '$year-${month.toString().padLeft(
-                        2, '0')}-$day';
-
+                    String dateString =
+                        '$year-${month.toString().padLeft(2, '0')}-$day';
 
                     return StreamBuilder<DocumentSnapshot>(
                         stream: Firestore.instance
@@ -90,10 +90,13 @@ class _DashboardContentState extends State<DashboardContent> {
                           String positiveToday = '0';
                           String recoveriesToday = '0';
                           String lastUpdated;
+                          String source;
 
-                          if (snapshot.hasData && snapshot.data != null &&
+                          if (snapshot.hasData &&
+                              snapshot.data != null &&
                               snapshot.data.exists) {
                             DocumentSnapshot snap = snapshot.data;
+                            source = snap.data['source'];
                             deathsToday = snap.data['total_deaths'].toString();
                             positiveToday =
                                 snap.data['total_positive'].toString();
@@ -105,10 +108,9 @@ class _DashboardContentState extends State<DashboardContent> {
                               var date = DateTime.fromMillisecondsSinceEpoch(
                                   timestamp.millisecondsSinceEpoch);
                               lastUpdated =
-                                  new DateFormat('Hms', 'en_US').format(date);
+                                  new DateFormat('HH:mm a').format(date);
                             }
                           }
-
 
                           return Card(
                             color: Theme
@@ -188,8 +190,12 @@ class _DashboardContentState extends State<DashboardContent> {
                                     child: Row(
                                       children: <Widget>[
                                         Expanded(
-                                          flex: 1,
-                                          child: Text('Data from DOH',
+                                          flex: 2,
+                                          child: Text(
+                                              source != null
+                                                  ? 'Data from $source'
+                                                  : '',
+                                              overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                   color: Colors.grey,
                                                   fontSize: 10)),
@@ -213,8 +219,7 @@ class _DashboardContentState extends State<DashboardContent> {
                               ),
                             ),
                           );
-                        }
-                    );
+                        });
                   }),
               SizedBox(height: 15),
               Transform.scale(

@@ -1,28 +1,33 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 4:51 PM
+// Created by Christian Gerard E. Hizon on 4/28/20 5:05 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 4:51 PM
+// Last modified 4/28/20 5:04 PM
 
+import 'package:covidstats/app/models/case.dart';
 import 'package:covidstats/app/screens/case/case.dart';
 import 'package:covidstats/app/screens/cases/case_pills.dart';
 import 'package:flutter/material.dart';
 
 class CasesTile extends StatelessWidget {
-  final String title;
+  final String location;
   final Color color;
   final String gender;
   final String age;
   final String status;
   final String id;
+  final String title;
+  final Patient patient;
 
-  const CasesTile(
-      {Key key,
-      this.title,
-      this.color = Colors.white,
-      this.gender,
-      this.age,
-      this.status,
-      this.id})
-      : super(key: key);
+  const CasesTile({
+    Key key,
+    this.location,
+    this.color = Colors.white,
+    this.gender,
+    this.age,
+    this.status,
+    this.id,
+    this.title,
+    this.patient,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,9 @@ class CasesTile extends StatelessWidget {
       child: Card(
         color: Theme.of(context).scaffoldBackgroundColor,
         child: FlatButton(
-          onPressed: () => Navigator.pushNamed(context, CasePage.route),
+          onPressed: () =>
+              Navigator.pushNamed(context, CasePage.route,
+                  arguments: CasePageArgs(this.patient)),
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 25, horizontal: 0),
             child: Row(
@@ -46,13 +53,13 @@ class CasesTile extends StatelessWidget {
                         width: 180,
                         child: CasePills(
                           title: status,
-                          count: 'NP#2',
+                          count: this.title,
                           color: color,
                         ),
                       ),
                       SizedBox(height: 10),
                       Text(
-                        this.title,
+                        this.location,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
@@ -71,7 +78,7 @@ class CasesTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'Male',
+                          '$gender',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontWeight: FontWeight.w300,
@@ -80,7 +87,7 @@ class CasesTile extends StatelessWidget {
                         ),
                         SizedBox(height: 3),
                         Text(
-                          '59 yr. old',
+                          '$age yr. old',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontWeight: FontWeight.w300, fontSize: 22),
