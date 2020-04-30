@@ -1,8 +1,10 @@
-// Created by Christian Gerard E. Hizon on 4/28/20 5:05 PM
+// Created by Christian Gerard E. Hizon on 4/30/20 5:11 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/28/20 5:04 PM
+// Last modified 4/30/20 5:11 PM
 
 import 'dart:async';
+import 'dart:typed_data';
+import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covidstats/app/blocs/blocs.dart';
@@ -17,7 +19,6 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  final _location = new Location();
   LocationData _currLoc;
   Completer<GoogleMapController> _controller = Completer();
 
@@ -26,7 +27,27 @@ class _MapPageState extends State<MapPage> {
     zoom: 10,
   );
 
-  Set<Circle> _circles = {};
+  Set<Circle> _circles = Set();
+
+  Map<MarkerId, Marker> _markers = <MarkerId, Marker>{};
+  CameraPosition _currPos;
+
+  _addMarker(LatLng location, String id) async {
+    var _markerId = MarkerId(id);
+
+    final Uint8List markerIcon = await getBytesFromCanvas(60, 60, '20');
+
+    final Marker marker = Marker(
+      markerId: _markerId,
+      position: location,
+      icon: BitmapDescriptor.fromBytes(markerIcon),
+    );
+    _markers[_markerId] = marker;
+  }
+
+  _addCityMarkers() async {
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +56,30 @@ class _MapPageState extends State<MapPage> {
       body: BlocBuilder<SetupBloc, SetupState>(builder: (context, state) {
         if (state is SetupAutomaticLocationInitialized) {
           _currLoc = state.location;
+        }
+
+        if (_currLoc != null) {
+          var _location = LatLng(_currLoc.latitude, _currLoc.longitude);
+
+          var _markerId = MarkerId(_currLoc.toString());
+
+          final Marker marker = Marker(
+              markerId: _markerId,
+              position: _location,
+              onTap: () async {
+                var controller = await _controller.future;
+                controller
+                    .animateCamera(CameraUpdate.newCameraPosition(_currPos));
+              });
+
+          _markers[_markerId] = marker;
+
+          _currPos = CameraPosition(
+            bearing: 192.8334901395799,
+            target: _location,
+            tilt: 59.440717697143555,
+            zoom: 13.151926040649414,
+          );
         }
 
         return FutureBuilder<QuerySnapshot>(
@@ -61,6 +106,7 @@ class _MapPageState extends State<MapPage> {
 
               List<DocumentSnapshot> docs = snapshot.data.documents;
 
+              _circles.clear();
               docs.forEach((doc) {
                 var data = doc.data;
 
@@ -72,12 +118,17 @@ class _MapPageState extends State<MapPage> {
                     longitude != null &&
                     positiveCount >= 1) {
                   double radius =
-                  (250 + (positiveCount ?? 0 * 10)).roundToDouble();
+                  (500 + (positiveCount * 100)).roundToDouble();
 
+                  if (radius > 3000) {
+                    radius = 3000;
+                  }
+
+                  var loc = LatLng(latitude, longitude);
                   _circles.add(
                     Circle(
                         circleId: CircleId(doc.documentID),
-                        center: LatLng(latitude, longitude),
+                        center: loc,
                         radius: radius,
                         strokeWidth: 3,
                         fillColor: Colors.red.withOpacity(.4),
@@ -90,8 +141,11 @@ class _MapPageState extends State<MapPage> {
                             zoom: 13.151926040649414,
                           );
                           var controller = await _controller.future;
-                          controller.animateCamera(
-                              CameraUpdate.newCameraPosition(_currPos));
+
+                          if (_currPos != null) {
+                            controller.animateCamera(
+                                CameraUpdate.newCameraPosition(_currPos));
+                          }
                         }),
                   );
                 }
@@ -101,6 +155,9 @@ class _MapPageState extends State<MapPage> {
                 mapType: MapType.normal,
                 initialCameraPosition: _bacolodCenter,
                 circles: _circles,
+                markers: Set<Marker>.of(_markers.values),
+                trafficEnabled: false,
+                mapToolbarEnabled: false,
                 onMapCreated: (GoogleMapController controller) async {
                   _controller.complete(controller);
 
@@ -108,12 +165,7 @@ class _MapPageState extends State<MapPage> {
                   if (_currLoc != null) {
                     await Future.delayed(
                         Duration(seconds: 1, milliseconds: 500));
-                    CameraPosition _currPos = CameraPosition(
-                      bearing: 192.8334901395799,
-                      target: LatLng(_currLoc.latitude, _currLoc.longitude),
-                      tilt: 59.440717697143555,
-                      zoom: 13.151926040649414,
-                    );
+
                     controller.animateCamera(
                         CameraUpdate.newCameraPosition(_currPos));
                   }
@@ -122,5 +174,38 @@ class _MapPageState extends State<MapPage> {
             });
       }),
     );
+  }
+
+  Future<Uint8List> getBytesFromCanvas(int width, int height,
+      String number) async {
+    final PictureRecorder pictureRecorder = PictureRecorder();
+    final Canvas canvas = Canvas(pictureRecorder);
+    final Paint paint = Paint()
+      ..color = Colors.redAccent;
+    final Radius radius = Radius.circular(width / 2);
+    canvas.drawRRect(
+        RRect.fromRectAndCorners(
+          Rect.fromLTWH(0.0, 0.0, width.toDouble(), height.toDouble()),
+          topLeft: radius,
+          topRight: radius,
+          bottomLeft: radius,
+          bottomRight: radius,
+        ),
+        paint);
+
+    TextPainter painter = TextPainter(textDirection: TextDirection.ltr);
+    painter.text = TextSpan(
+      text: number,
+      style: TextStyle(fontSize: 30.0, color: Colors.white),
+    );
+
+    painter.layout();
+    painter.paint(
+        canvas,
+        Offset((width * 0.5) - painter.width * 0.5,
+            (height * .5) - painter.height * 0.5));
+    final img = await pictureRecorder.endRecording().toImage(width, height);
+    final data = await img.toByteData(format: ImageByteFormat.png);
+    return data.buffer.asUint8List();
   }
 }

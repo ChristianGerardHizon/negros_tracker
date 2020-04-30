@@ -1,8 +1,6 @@
-/*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/22/20 12:48 PM
- * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/22/20 12:29 PM
- ******************************************************************************/
+// Created by Christian Gerard E. Hizon on 4/30/20 5:11 PM
+// Copyright (c) 2020 . All rights reserved.
+// Last modified 4/30/20 10:52 AM
 
 import 'package:flutter/material.dart';
 
@@ -25,12 +23,15 @@ class DashboardItemAlt2 extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text(
-              this.title,
-              style: TextStyle(
-                color: color,
-                fontWeight: FontWeight.w500,
-                fontSize: 15,
+            FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Text(
+                this.title,
+                style: TextStyle(
+                  color: color,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                ),
               ),
             ),
             Container(

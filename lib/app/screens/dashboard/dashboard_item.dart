@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/27/20 4:15 PM
+// Created by Christian Gerard E. Hizon on 4/30/20 5:11 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/27/20 4:15 PM
+// Last modified 4/30/20 10:54 AM
 
 import 'package:flutter/material.dart';
 
@@ -33,12 +33,15 @@ class DashboardItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text(
-              this.title,
-              style: TextStyle(
-                color: color,
-                fontWeight: FontWeight.w500,
-                fontSize: 15,
+            FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Text(
+                this.title,
+                style: TextStyle(
+                  color: color,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                ),
               ),
             ),
             SizedBox(height: 10),

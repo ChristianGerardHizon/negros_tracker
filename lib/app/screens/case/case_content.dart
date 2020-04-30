@@ -1,11 +1,12 @@
-// Created by Christian Gerard E. Hizon on 4/28/20 5:42 PM
+// Created by Christian Gerard E. Hizon on 4/30/20 5:11 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/28/20 5:41 PM
+// Last modified 4/30/20 4:22 PM
 
 import 'dart:async';
 
 import 'package:covidstats/app/models/case.dart';
 import 'package:covidstats/app/screens/case/case_info.dart';
+import 'package:covidstats/app/screens/case/case_map.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -40,12 +41,8 @@ class _CaseContentState extends State<CaseContent> {
 
         Expanded(
           flex: 1,
-          child: GoogleMap(
-            mapType: MapType.terrain,
-            initialCameraPosition: _bacolodCenter,
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-            },
+          child: CaseMap(
+            patient: widget.patient,
           ),
         )
 
