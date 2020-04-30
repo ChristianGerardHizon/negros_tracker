@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/28/20 5:05 PM
+// Created by Christian Gerard E. Hizon on 4/30/20 5:13 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/28/20 5:04 PM
+// Last modified 4/30/20 5:13 PM
 
 import 'package:covidstats/app/models/case.dart';
 import 'package:covidstats/app/screens/case/case.dart';
@@ -58,18 +58,25 @@ class CasesTile extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
-                      Text(
-                        this.location,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 25,
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          this.location,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            fontSize: 25,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-                Container(height: 70, child: VerticalDivider()),
+                Container(
+                    height: 70,
+                    child: VerticalDivider(
+                      width: 50,
+                    )),
                 Expanded(
                   flex: 1,
                   child: Container(
