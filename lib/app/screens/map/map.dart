@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/30/20 5:11 PM
+// Created by Christian Gerard E. Hizon on 4/30/20 5:23 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/30/20 5:11 PM
+// Last modified 4/30/20 5:23 PM
 
 import 'dart:async';
 import 'dart:typed_data';
@@ -45,9 +45,7 @@ class _MapPageState extends State<MapPage> {
     _markers[_markerId] = marker;
   }
 
-  _addCityMarkers() async {
-
-  }
+  _addCityMarkers() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -117,8 +115,7 @@ class _MapPageState extends State<MapPage> {
                 if (latitude != null &&
                     longitude != null &&
                     positiveCount >= 1) {
-                  double radius =
-                  (500 + (positiveCount * 100)).roundToDouble();
+                  double radius = (500 + (positiveCount * 100)).roundToDouble();
 
                   if (radius > 3000) {
                     radius = 3000;
@@ -159,7 +156,9 @@ class _MapPageState extends State<MapPage> {
                 trafficEnabled: false,
                 mapToolbarEnabled: false,
                 onMapCreated: (GoogleMapController controller) async {
-                  _controller.complete(controller);
+                  if (!_controller.isCompleted) {
+                    _controller.complete(controller);
+                  }
 
                   // animated change camera to users location
                   if (_currLoc != null) {
