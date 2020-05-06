@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/28/20 5:05 PM
+// Created by Christian Gerard E. Hizon on 5/6/20 6:09 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/28/20 4:29 PM
+// Last modified 5/6/20 6:07 PM
 
 import 'package:covidstats/app/models/case.dart';
 import 'package:covidstats/app/screens/case/case_content.dart';
@@ -59,6 +59,7 @@ class _CasePageState extends State<CasePage> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: Container(
           width: 200,
+          height: 40,
           child: CasePills(
             title: _capitalize(patient.status),
             color: _coloPicker(patient.status.toLowerCase()),

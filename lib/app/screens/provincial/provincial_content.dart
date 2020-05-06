@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/27/20 3:13 PM
+// Created by Christian Gerard E. Hizon on 5/6/20 6:09 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/27/20 3:13 PM
+// Last modified 5/6/20 6:09 PM
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covidstats/app/blocs/blocs.dart';
@@ -14,14 +14,14 @@ class ProvincialContent extends StatelessWidget {
     return BlocBuilder<SetupBloc, SetupState>(
       builder: (context, state) {
         return Container(
-            child: FutureBuilder<QuerySnapshot>(
-              future: Firestore.instance
+            child: StreamBuilder<QuerySnapshot>(
+              stream: Firestore.instance
                   .collection('dev-cases')
                   .document('summary')
                   .collection('city-breakdown')
-                  .getDocuments(),
+                  .snapshots(),
               builder: (context, snapshot) {
-                if (snapshot.connectionState != ConnectionState.done) {
+                if (!snapshot.hasData) {
                   return Container(
                     alignment: Alignment.center,
                     child: Column(

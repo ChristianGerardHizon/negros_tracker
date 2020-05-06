@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Created by Christian Gerard E. Hizon on 4/27/20 12:26 PM
+ * Created by Christian Gerard E. Hizon on 5/6/20 6:10 PM
  * Copyright (c) 2020 . All rights reserved.
- * Last modified 4/24/20 5:08 PM
+ * Last modified 5/5/20 4:37 PM
  ******************************************************************************/
 
 def localProperties = new Properties()
@@ -32,6 +32,12 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     compileSdkVersion 28
 
@@ -54,12 +60,17 @@ android {
         multiDexEnabled true
 
     }
-
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }

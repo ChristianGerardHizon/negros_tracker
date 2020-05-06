@@ -1,10 +1,11 @@
-// Created by Christian Gerard E. Hizon on 4/30/20 5:13 PM
+// Created by Christian Gerard E. Hizon on 5/6/20 6:09 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/30/20 5:13 PM
+// Last modified 5/6/20 6:09 PM
 
 import 'package:covidstats/app/models/case.dart';
 import 'package:covidstats/app/screens/case/case.dart';
 import 'package:covidstats/app/screens/cases/case_pills.dart';
+import 'package:covidstats/app/utils/modifiers.dart';
 import 'package:flutter/material.dart';
 
 class CasesTile extends StatelessWidget {
@@ -50,6 +51,7 @@ class CasesTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
+                        height: 35,
                         width: 180,
                         child: CasePills(
                           title: status,
@@ -58,14 +60,17 @@ class CasesTile extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
-                      FittedBox(
-                        fit: BoxFit.fitWidth,
-                        child: Text(
-                          this.location,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w300,
-                            fontSize: 25,
+                      Hero(
+                        tag: Modifiers.capitalize(patient.location),
+                        child: FittedBox(
+                          fit: BoxFit.fitWidth,
+                          child: Text(
+                            this.location,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              fontSize: 25,
+                            ),
                           ),
                         ),
                       ),
@@ -77,29 +82,32 @@ class CasesTile extends StatelessWidget {
                     child: VerticalDivider(
                       width: 50,
                     )),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '$gender',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300,
-                              fontSize: 20,
-                              color: Colors.white54),
-                        ),
-                        SizedBox(height: 3),
-                        Text(
-                          '$age yr. old',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300, fontSize: 22),
-                        ),
-                      ],
+                FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Hero(
+                    tag: '${patient.id}-gender',
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            '$gender',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w300,
+                                fontSize: 20,
+                                color: Colors.white54),
+                          ),
+                          SizedBox(height: 3),
+                          Text(
+                            '$age yr. old',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w300, fontSize: 22),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

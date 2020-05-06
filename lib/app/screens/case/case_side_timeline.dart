@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/30/20 5:11 PM
+// Created by Christian Gerard E. Hizon on 5/6/20 6:09 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/30/20 5:11 PM
+// Last modified 5/6/20 6:09 PM
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covidstats/app/models/case.dart';
 import 'package:covidstats/app/utils/modifiers.dart';
@@ -27,13 +27,16 @@ class _CaseSideTimelineState extends State<CaseSideTimeline> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(
-              child: Text(
-                Modifiers.capitalize(patient.location),
-                style: TextStyle(fontSize: 18, letterSpacing: 1.2),
+            Hero(
+              tag: Modifiers.capitalize(patient.location),
+              child: Container(
+                child: Text(
+                  Modifiers.capitalize(patient.location),
+                  style: TextStyle(fontSize: 18, letterSpacing: 1.2),
+                ),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
             StreamBuilder<QuerySnapshot>(
                 stream: Firestore.instance
                     .collection('dev-patients')
@@ -58,7 +61,7 @@ class _CaseSideTimelineState extends State<CaseSideTimeline> {
                     docs = snapshot.data.documents;
                   }
 
-                  if (docs == null) {
+                  if (docs.length <= 0) {
                     return Container(
                       alignment: Alignment.center,
                       child: Column(
@@ -78,25 +81,55 @@ class _CaseSideTimelineState extends State<CaseSideTimeline> {
                         itemBuilder: (context, index) {
                           var doc = docs[index];
 
-                          Timestamp time = doc.data['date'];
-                          var locations = doc.data['location'];
+                          bool isStart = doc.data['isStart'] ?? false;
+                          bool isDead = doc.data['isDead'] ?? false;
+                          bool isRecovered = doc.data['isRecovered'] ?? false;
 
-                          DateTime date = time.toDate();
+                          String dateText = '';
+                          String descText = '';
+                          String colorSting = 'base';
+                          Timestamp time = doc.data['date'];
+
+                          if (time != null) {
+                            DateTime date = time.toDate();
+                            dateText = '${date.month}/${date.day}';
+                          } else {
+                            dateText = 'N/A ';
+                          }
+
+                          if (!isStart) {
+                            var locations = doc.data['location'];
+                            descText =
+                            '${Modifiers.capitalize(locations ?? '')}';
+                          } else {
+                            descText =
+                            '${Modifiers.capitalize(
+                                doc.data['description'] ?? '')}';
+                            colorSting = 'positive';
+                          }
+
+                          if (isRecovered) {
+                            colorSting = 'recovered';
+                          }
+
+                          if (isDead) {
+                            colorSting = 'dead';
+                          }
 
                           return Container(
                             margin: EdgeInsets.only(bottom: 10),
                             child: Row(
                               children: <Widget>[
                                 Text(
-                                  '${date.month}/${date.day}',
+                                  '$dateText - ',
                                   style: TextStyle(
                                       fontSize: 12, letterSpacing: 1.2),
                                 ),
                                 Text(
-                                  ' - ${Modifiers.capitalize(
-                                      doc.data['location'] ?? '')}',
+                                  descText,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
+                                    color: Modifiers.coloPicker(colorSting),
                                     fontSize: 14,
                                     letterSpacing: 1.2,
                                     fontWeight: FontWeight.w700,

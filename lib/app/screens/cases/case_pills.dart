@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/24/20 4:51 PM
+// Created by Christian Gerard E. Hizon on 5/6/20 6:09 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/24/20 3:33 PM
+// Last modified 5/6/20 6:09 PM
 
 import 'package:flutter/material.dart';
 
@@ -16,40 +16,44 @@ class CasePills extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: new BoxDecoration(
+        color: color,
         border: Border.all(color: color),
         borderRadius: new BorderRadius.all(
           const Radius.circular(8.0),
         ),
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Expanded(
             flex: 1,
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-              child: Text(
-                this.count,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: color,
+              decoration: new BoxDecoration(
+                color: Theme
+                    .of(context)
+                    .scaffoldBackgroundColor,
+                border: Border.all(color: color),
+                borderRadius: new BorderRadius.all(const Radius.circular(6.0)),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: Text(
+                  this.count,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: color,
+                  ),
                 ),
               ),
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            decoration: new BoxDecoration(
-              color: color,
-              border: Border.all(color: color),
-              borderRadius: new BorderRadius.only(
-                topRight: const Radius.circular(6.0),
-                bottomRight: const Radius.circular(6.0),
-              ),
-            ),
+            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
             child: Text(
               this.title,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).scaffoldBackgroundColor,
