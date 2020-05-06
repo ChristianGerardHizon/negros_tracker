@@ -1,6 +1,6 @@
-// Created by Christian Gerard E. Hizon on 4/28/20 5:05 PM
+// Created by Christian Gerard E. Hizon on 5/6/20 7:10 PM
 // Copyright (c) 2020 . All rights reserved.
-// Last modified 4/28/20 5:04 PM
+// Last modified 5/6/20 7:10 PM
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covidstats/app/blocs/blocs.dart';
@@ -27,7 +27,7 @@ class _DashboardContentState extends State<DashboardContent> {
   @override
   Widget build(BuildContext context) {
     _buildCity(SetupState state) {
-      String address = 'latest';
+      String address = 'summary';
       if (state is SetupManualLocationInitialized) {
         address = state.address;
       }
@@ -76,7 +76,8 @@ class _DashboardContentState extends State<DashboardContent> {
                     int year = date.year;
 
                     String dateString =
-                        '$year-${month.toString().padLeft(2, '0')}-$day';
+                        '$year-${month.toString().padLeft(2, '0')}-${day
+                        .toString().padLeft(2, '0')}';
 
                     return StreamBuilder<DocumentSnapshot>(
                         stream: Firestore.instance
@@ -85,30 +86,33 @@ class _DashboardContentState extends State<DashboardContent> {
                             .collection('city-breakdown')
                             .document(_buildCity(state))
                             .snapshots(),
-                        builder: (context, snapshot) {
+                        builder: (context, snapshotCity) {
                           String deathsToday = '0';
                           String positiveToday = '0';
                           String recoveriesToday = '0';
                           String lastUpdated;
                           String source;
 
-                          if (snapshot.hasData &&
-                              snapshot.data != null &&
-                              snapshot.data.exists) {
-                            DocumentSnapshot snap = snapshot.data;
-                            source = snap.data['source'];
-                            deathsToday = snap.data['total_deaths'].toString();
+                          if (snapshotCity.hasData &&
+                              snapshotCity.data != null &&
+                              snapshotCity.data.exists) {
+                            DocumentSnapshot citySnap = snapshotCity.data;
+
+
+                            source = citySnap.data['source'];
+                            deathsToday =
+                                citySnap.data['total_deaths'].toString();
                             positiveToday =
-                                snap.data['total_positive'].toString();
+                                citySnap.data['total_positive'].toString();
                             recoveriesToday =
-                                snap.data['total_recoveries'].toString();
-                            Timestamp timestamp = snap.data['last_updated'];
+                                citySnap.data['total_recoveries'].toString();
+                            Timestamp timestamp = citySnap.data['last_updated'];
 
                             if (timestamp != null) {
                               var date = DateTime.fromMillisecondsSinceEpoch(
                                   timestamp.millisecondsSinceEpoch);
                               lastUpdated =
-                                  new DateFormat('HH:mm a').format(date);
+                                  new DateFormat('hh:mm a').format(date);
                             }
                           }
 
@@ -193,7 +197,7 @@ class _DashboardContentState extends State<DashboardContent> {
                                           flex: 2,
                                           child: Text(
                                               source != null
-                                                  ? 'Data from $source'
+                                                  ? 'From $source'
                                                   : '',
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
