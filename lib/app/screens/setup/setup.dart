@@ -47,7 +47,7 @@ class SetupPage extends StatelessWidget {
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 TabsPage.route,
-                    (route) => false,
+                (route) => false,
               );
             },
             onManualSelect: () {
@@ -109,11 +109,10 @@ class SetupPage extends StatelessWidget {
         },
         child: SafeArea(
           child: Container(
-            padding: EdgeInsets.only(left: 30, right: 30, top: 50),
+            padding: EdgeInsets.only(left: 30, right: 30, top: 40, bottom: 10),
             child: Column(
               children: <Widget>[
-                Expanded(
-                  flex: 2,
+                Container(
                   child: Column(
                     children: <Widget>[
                       Container(
@@ -140,7 +139,7 @@ class SetupPage extends StatelessWidget {
                     child: Text(
                       Strings.message,
                       style:
-                      TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -148,24 +147,19 @@ class SetupPage extends StatelessWidget {
                 ///
                 ///
                 /// buttons
-                Expanded(
-                  flex: 2,
+                Container(
                   child: Column(
                     children: <Widget>[
                       Container(
                         width: double.maxFinite,
                         child: FlatButton.icon(
-                          onPressed: () =>
-                              _setupBloc
-                                  .add(
-                                  LocationEnabled(LocationTypes.automatic)),
+                          onPressed: () => _setupBloc
+                              .add(LocationEnabled(LocationTypes.automatic)),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           padding: EdgeInsets.all(18),
-                          color: Theme
-                              .of(context)
-                              .primaryColor,
+                          color: Theme.of(context).primaryColor,
                           icon: Icon(FontAwesomeIcons.mapMarkerAlt),
                           label: Text(
                             'Use Location',
@@ -180,9 +174,8 @@ class SetupPage extends StatelessWidget {
                         width: double.maxFinite,
                         child: FlatButton(
                           padding: EdgeInsets.all(18),
-                          onPressed: () =>
-                              _setupBloc
-                                  .add(LocationEnabled(LocationTypes.manual)),
+                          onPressed: () => _setupBloc
+                              .add(LocationEnabled(LocationTypes.manual)),
                           child: Text(
                             'Manually choose location',
                             style: TextStyle(
