@@ -21,11 +21,11 @@ class NegrosAppBar extends StatelessWidget {
           ),
           SizedBox(width: 10),
           Text(
-            'Negros',
+            'NO',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Text(
-            'Tracker',
+            'Cov',
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w300,

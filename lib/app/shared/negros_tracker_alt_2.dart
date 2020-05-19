@@ -33,11 +33,11 @@ class NegrosTrackerAlt2 extends StatelessWidget {
               ),
               SizedBox(width: 5),
               Text(
-                'Negros',
+                'NO',
                 style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
               ),
               Text(
-                'Tracker',
+                'Cov',
                 style: TextStyle(
                     fontSize: 34,
                     fontWeight: FontWeight.w300,

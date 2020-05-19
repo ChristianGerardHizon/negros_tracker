@@ -28,7 +28,7 @@ class _ApplicationState extends State<Application> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
 
-          title: 'NegrosTracker',
+          title: 'NOCov',
           theme: themeState.theme,
           initialRoute: Router.initial,
           onGenerateRoute: Router.generateRoute,
