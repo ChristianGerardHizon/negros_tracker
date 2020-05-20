@@ -15,11 +15,12 @@ class NegrosTracker extends StatelessWidget {
           Row(
             children: <Widget>[
               Text(
-                'NO',
+                'NOCov',
                 style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
               ),
+              SizedBox(width: 3),
               Text(
-                'Cov',
+                'Tracker',
                 style: TextStyle(
                     fontSize: 34,
                     fontWeight: FontWeight.w300,
