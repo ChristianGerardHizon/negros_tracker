@@ -36,6 +36,7 @@ class NegrosTrackerAlt2 extends StatelessWidget {
                 'NOCov',
                 style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
               ),
+              SizedBox(width: 3),
               Text(
                 'Tracker',
                 style: TextStyle(

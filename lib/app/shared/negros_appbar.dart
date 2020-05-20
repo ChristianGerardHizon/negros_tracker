@@ -24,6 +24,7 @@ class NegrosAppBar extends StatelessWidget {
             'NOCov',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
+          SizedBox(width: 3),
           Text(
             'Tracker',
             style: TextStyle(
