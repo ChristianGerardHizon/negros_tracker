@@ -60,17 +60,14 @@ class CasesTile extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
-                      Hero(
-                        tag: Modifiers.capitalize(patient.location),
-                        child: FittedBox(
-                          fit: BoxFit.fitWidth,
-                          child: Text(
-                            this.location,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w300,
-                              fontSize: 25,
-                            ),
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          this.location,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            fontSize: 25,
                           ),
                         ),
                       ),
@@ -84,30 +81,27 @@ class CasesTile extends StatelessWidget {
                     )),
                 FittedBox(
                   fit: BoxFit.fitWidth,
-                  child: Hero(
-                    tag: '${patient.id}-gender',
-                    child: Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            '$gender',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 20,
-                                color: Colors.white54),
-                          ),
-                          SizedBox(height: 3),
-                          Text(
-                            '$age yr. old',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w300, fontSize: 22),
-                          ),
-                        ],
-                      ),
+                  child: Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          '$gender',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              fontSize: 20,
+                              color: Colors.white54),
+                        ),
+                        SizedBox(height: 3),
+                        Text(
+                          '$age yr. old',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w300, fontSize: 22),
+                        ),
+                      ],
                     ),
                   ),
                 ),

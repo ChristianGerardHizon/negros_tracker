@@ -26,8 +26,6 @@ class _ApplicationState extends State<Application> {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, ThemeState themeState) {
         return MaterialApp(
-          debugShowCheckedModeBanner: false,
-
           title: 'NOCov',
           theme: themeState.theme,
           initialRoute: Router.initial,

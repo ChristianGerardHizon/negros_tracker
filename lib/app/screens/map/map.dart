@@ -73,10 +73,10 @@ class _MapPageState extends State<MapPage> {
           _markers[_markerId] = marker;
 
           _currPos = CameraPosition(
-            bearing: 192.8334901395799,
+            bearing: 18.8334901395799,
             target: _location,
             tilt: 59.440717697143555,
-            zoom: 13.151926040649414,
+            zoom: 14.151926040649414,
           );
         }
 
@@ -134,7 +134,7 @@ class _MapPageState extends State<MapPage> {
                         onTap: () async {
                           CameraPosition _currPos = CameraPosition(
                             target: LatLng(latitude, longitude),
-                            tilt: 59.440717697143555,
+                            tilt: 10.440717697143555,
                             zoom: 13.151926040649414,
                           );
                           var controller = await _controller.future;
